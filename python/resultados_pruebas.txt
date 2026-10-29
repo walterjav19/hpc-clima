@@ -1,0 +1,78 @@
+DataFrame completo:
+  ESTACION PAIS  TMAX  TMIN  PRCP
+0    GT001   GT  31.2  18.4   0.0
+1    GT002   GT  28.5  15.0  12.5
+2    MX001   MX  35.0  22.3   3.2
+3    SV001   SV  33.1  21.7   0.0
+
+1) Un solo valor -> iloc[fila, columna]
+28.5
+
+2) Una fila completa -> iloc[fila]  (sin coma = filas)
+ESTACION    GT001
+PAIS           GT
+TMAX         31.2
+TMIN         18.4
+PRCP          0.0
+Name: 0, dtype: object
+
+3) Una columna completa -> iloc[:, columna]
+0    31.2
+1    28.5
+2    35.0
+3    33.1
+Name: TMAX, dtype: float64
+
+4) Varias filas seguidas (slice) -> iloc[inicio:fin]  (fin NO se incluye)
+  ESTACION PAIS  TMAX  TMIN  PRCP
+1    GT002   GT  28.5  15.0  12.5
+2    MX001   MX  35.0  22.3   3.2
+
+5) Varias columnas seguidas -> iloc[:, inicio:fin]
+   TMAX  TMIN  PRCP
+0  31.2  18.4   0.0
+1  28.5  15.0  12.5
+2  35.0  22.3   3.2
+3  33.1  21.7   0.0
+
+6) Filas y columnas específicas con listas
+  ESTACION  TMAX  TMIN
+0    GT001  31.2  18.4
+2    MX001  35.0  22.3
+
+7) Posiciones negativas: cuentan desde el final
+ESTACION    SV001
+PAIS           SV
+TMAX         33.1
+TMIN         21.7
+PRCP          0.0
+Name: 3, dtype: object
+0     0.0
+1    12.5
+2     3.2
+3     0.0
+Name: PRCP, dtype: float64
+
+8) Un rango de filas de una sola columna
+0    GT001
+1    GT002
+Name: ESTACION, dtype: str
+
+9) Filtrar con una máscara booleana (debe ser lista/array, no Series)
+  ESTACION  PRCP
+1    GT002  12.5
+2    MX001   3.2
+
+10) Modificar un valor con iloc
+  ESTACION PAIS  TMAX  TMIN  PRCP
+0    GT001   GT  31.2  18.4   1.8
+1    GT002   GT  28.5  15.0  12.5
+2    MX001   MX  35.0  22.3   3.2
+3    SV001   SV  33.1  21.7   0.0
+
+11) Diferencia Series vs DataFrame al seleccionar una columna
+<class 'pandas.Series'>
+<class 'pandas.DataFrame'>
+
+12) Error típico: posición fuera de rango
+IndexError: single positional indexer is out-of-bounds

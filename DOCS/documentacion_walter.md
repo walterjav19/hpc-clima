@@ -54,3 +54,44 @@ Proyecto: análisis meteorológico para el I Taller de HPC en CPU y GPU con Pyth
 - **El Salvador tiene muy poca PRCP** (9,988 en 41,056 filas), así que su análisis de lluvia sería débil.
 - **Centroamérica en conjunto aporta pocas estaciones** (14), con series irregulares. 
 
+# lIMPIANDO DATOS
+
+```
+Filas: 1366640
+               PRCP           TMAX           TMIN          TAVG
+count  1.079044e+06  925750.000000  918746.000000  1.138583e+06
+mean   2.469604e+01     296.194684     156.646774  2.309268e+02
+std    1.066222e+02      54.970547      70.078186  5.784930e+01
+min    0.000000e+00     -40.000000    -215.000000 -1.410000e+02
+25%    0.000000e+00     262.000000     108.000000  1.930000e+02
+50%    0.000000e+00     301.000000     163.000000  2.380000e+02
+75%    0.000000e+00     333.000000     217.000000  2.760000e+02
+max    5.001000e+03     500.000000     360.000000  4.250000e+02
+Duplicados removidos: 0
+```
+| Fila | Significado |
+|---|---|
+| `count` | Cuántos valores **no vacíos** hay (después del filtro de calidad) |
+| `mean` | Promedio |
+| `std` | Desviación estándar: qué tanto varían los datos alrededor del promedio |
+| `min` | Valor más bajo |
+| `25%` | El 25 % de los datos está por debajo de este valor |
+| `50%` | Mediana: la mitad de los datos está por debajo |
+| `75%` | El 75 % de los datos está por debajo |
+| `max` | Valor más alto |
+ 
+Nota: `1.079044e+06` es notación científica y equivale a 1,079,044.
+
+
+## variables
+
+Las cuatro variables vienen multiplicadas por 10:
+ 
+| Variable | Valor en la salida | Valor real |
+|---|---|---|
+| TMAX (media) | 296.19 | **29.6 °C** |
+| TMIN (media) | 156.65 | **15.7 °C** |
+| TAVG (media) | 230.93 | **23.1 °C** |
+| PRCP (media) | 24.70 | **2.5 mm/día** |
+ 
+Por eso hay que dividir entre 10 antes de analizar. Una TMAX media de 296 °C sería absurda; de 29.6 °C es normal para México y Centroamérica..
